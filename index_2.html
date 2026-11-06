@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KopiNyantuy | Premium Kiosk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- PRELOADER & SCROLL PROGRESS -->
+  <div id="preloader"><div class="loader"></div></div>
+  <div id="scroll-progress"></div>
+  <div id="toast">✅ Pesanan berhasil dikirim!</div>
+
+  <!-- THEME SWITCHER -->
+  <div class="theme-switcher">
+    <label style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
+      <input type="checkbox" id="theme-switch"> 🌙 Dark Mode
+    </label>
+  </div>
+
+  <!-- FLOATING BUTTONS -->
+  <a href="#" class="floating-btn back-to-top" id="backToTop">⬆</a>
+  <a href="https://wa.me/62895320078768" target="_blank" class="floating-btn wa-float">💬 WA Kasir</a>
+
+  <!-- NAVBAR -->
+  <header class="header">
+    <div class="logo">☕ Kopi<span>Nyantuy</span></div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Profil</a>
+      <a href="#">Menu</a>
+      <a href="#">Kontak</a>
+    </nav>
+    <div class="search-bar">
+      <input type="search" id="menuSearch" placeholder="🔍 Cari Menu...">
+    </div>
+  </header>
+
+  <!-- KONTEN UTAMA -->
+  <main class="container">
+    
+    <!-- HERO SECTION -->
+    <section class="hero-section glass-panel">
+      <div class="hero-content">
+        <span class="badge badge-teal">+ CAFE & COFFEE</span>
+        <h1 class="hero-title">Ngopi Santai di KopiNyantuy</h1>
+        <p>Tempat nyaman untuk menikmati kopi, ngobrol bersama teman, mengerjakan tugas, atau sekadar menikmati waktu santai.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="document.getElementById('menuGrid').scrollIntoView();">Lihat Menu →</button>
+          <button class="btn-outline">Hubungi Kami</button>
+        </div>
+      </div>
+      <div class="hero-promo glass-panel">
+        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=100&q=80" alt="Promo">
+        <div>
+          <h4>FAVORIT PELANGGAN</h4>
+          <p>Kopi Susu Nyantuy (Manis & Creamy)</p>
+          <strong>Rp18.000</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO WIDGETS -->
+    <section class="info-widgets">
+      <div class="widget-card glass-panel">
+        <span class="icon">🔥</span>
+        <div>
+          <small>PROMO HARI INI</small>
+          <h4>Beli 2 Kopi Susu</h4>
+          <p>Diskon dua cup. Beli 2 hanya Rp30.000</p>
+        </div>
+      </div>
+      <div class="widget-card glass-panel">
+        <span class="icon">🕒</span>
+        <div>
+          <small>JAM OPERASIONAL</small>
+          <h4>Setiap Hari</h4>
+          <p>09.00 - 22.00 WIB</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+      <div class="about-text">
+        <small>TENTANG KAMI</small>
+        <h2>Kenalan dengan KopiNyantuy</h2>
+        <p>KopiNyantuy hadir sebagai tempat nongkrong yang nyaman untuk semua kalangan. Kami menyajikan berbagai pilihan kopi, minuman non-kopi, dan makanan ringan dengan harga yang ramah di kantong.</p>
+        <p>Suasana santai, minuman nikmat, dan tempat yang nyaman menjadi alasan kami hadir untuk menemani waktu santaimu.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Cafe KopiNyantuy" loading="lazy">
+      </div>
+    </section>
+
+    <!-- MENU AREA (SIDEBAR + DAFTAR) -->
+    <div class="menu-layout">
+      
+      <!-- SIDEBAR KIRI -->
+      <aside class="sidebar glass-panel">
+        <h3>Menu Kami</h3>
+        <p class="text-muted" style="font-size: 13px;">Pilihan nikmat untuk menemani waktu santai mu.</p>
+        <hr>
+        <ul class="sidebar-nav">
+          <li class="active">☕ Kopi</li>
+          <li>🍵 Non-Kopi</li>
+          <li>🥐 Snack & Makanan</li>
+        </ul>
+      </aside>
+
+      <!-- DAFTAR MENU KANAN -->
+      <section class="menu-list" id="menuGrid">
+        
+        <article class="menu-list-card glass-panel" data-name="Kopi Susu Nyantuy">
+          <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=150&q=80" alt="Kopi Susu Nyantuy" loading="lazy">
+          <div class="menu-info">
+            <div class="menu-header">
+              <h3>Kopi Susu Nyantuy <span class="badge">Favorit</span></h3>
+              <p class="price">Rp18.000</p>
+            </div>
+            <p class="desc">Perpaduan espresso dan susu gula aren dengan rasa yang pas.</p>
+            <button class="btn-pesan-sm" onclick="bukaForm('Kopi Susu Nyantuy', 18000)">Pesan Sekarang</button>
+          </div>
+        </article>
+
+        <article class="menu-list-card glass-panel" data-name="Matcha Latte">
+          <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=150&q=80" alt="Matcha Latte" loading="lazy">
+          <div class="menu-info">
+            <div class="menu-header">
+              <h3>Matcha Latte <span class="badge badge-teal">Best Seller</span></h3>
+              <p class="price">Rp20.000</p>
+            </div>
+            <p class="desc">Matcha lembut dengan susu segar yang seimbang.</p>
+            <button class="btn-pesan-sm" onclick="bukaForm('Matcha Latte', 20000)">Pesan Sekarang</button>
+          </div>
+        </article>
+
+        <article class="menu-list-card glass-panel" data-name="Cafe Latte">
+          <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=150&q=80" alt="Cafe Latte" loading="lazy">
+          <div class="menu-info">
+            <div class="menu-header">
+              <h3>Cafe Latte</h3>
+              <p class="price">Rp20.000</p>
+            </div>
+            <p class="desc">Espresso pekat dengan steamed milk dan foam tipis.</p>
+            <button class="btn-pesan-sm" onclick="bukaForm('Cafe Latte', 20000)">Pesan Sekarang</button>
+          </div>
+        </article>
+        
+        <p id="pesanKosong" style="display: none; text-align: center; margin-top: 20px;">Menu tidak ditemukan.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL FORM PESANAN (KODE SAMA SEPERTI SEBELUMNYA) -->
+  <div class="modal-overlay" id="modalPesanan">
+    <div class="modal-box glass-panel">
+      <button class="btn-tutup" onclick="tutupForm()">✕</button>
+      <h2>Detail Pesanan</h2>
+      <p id="namaMenuPilihan" class="menu-terpilih">-</p>
+
+      <form id="formPesan" onsubmit="kirimKeWhatsApp(event)">
+        <div class="input-group">
+          <label>Nama Pemesan</label>
+          <input type="text" id="inputNama" placeholder="Masukkan nama kamu..." required>
+        </div>
+        <div class="input-group">
+          <label>Nomor Meja</label>
+          <select id="inputMeja" required>
+            <option value="">-- Pilih Lokasi --</option>
+            <option value="Meja 1 (Indoor)">Meja 1 (Indoor)</option>
+            <option value="Meja 2 (Indoor)">Meja 2 (Indoor)</option>
+            <option value="Meja 3 (Outdoor)">Meja 3 (Outdoor)</option>
+            <option value="Bungkus / Takeaway">Bungkus / Takeaway</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Jumlah Porsi</label>
+          <input type="number" id="inputJumlah" min="1" value="1" onchange="hitungTotal()" required>
+        </div>
+        <div class="input-group">
+          <label>Metode Pembayaran</label>
+          <select id="inputBayar" required>
+            <option value="">-- Pilih Pembayaran --</option>
+            <option value="Tunai">Bayar di Kasir (Tunai)</option>
+            <option value="QRIS">QRIS / E-Wallet</option>
+          </select>
+        </div>
+        <div class="total-harga">Total: <span id="teksTotal">Rp0</span></div>
+        <button type="submit" class="btn-primary" style="width: 100%;">Konfirmasi Pesanan</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPT JS LAMA ANDA -->
+  <script>
+    // PRELOADER & SCROLL
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        document.getElementById('preloader').style.opacity = '0';
+        setTimeout(() => document.getElementById('preloader').style.display = 'none', 500);
+      }, 500);
+    });
+
+    window.onscroll = function() {
+      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      document.getElementById("scroll-progress").style.width = (winScroll / height) * 100 + "%";
+      document.getElementById("backToTop").style.display = winScroll > 300 ? "block" : "none";
+    };
+
+    // DARK MODE
+    const themeSwitch = document.getElementById('theme-switch');
+    themeSwitch.addEventListener('change', () => { document.body.classList.toggle('dark-mode', themeSwitch.checked); });
+
+    // TOAST
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3000);
+    }
+
+    // SEARCH
+    document.getElementById('menuSearch').addEventListener('input', function(e) {
+      const keyword = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll('.menu-list-card');
+      let adaHasil = false;
+      cards.forEach(card => {
+        if (card.dataset.name.toLowerCase().includes(keyword)) {
+          card.style.display = 'flex'; adaHasil = true;
+        } else { card.style.display = 'none'; }
+      });
+      document.getElementById('pesanKosong').style.display = adaHasil ? 'none' : 'block';
+    });
+
+    // PESANAN LOGIC
+    let hargaSatuan = 0, menuSaatIni = "", pesananTerakhir = null; 
+
+    function formatRupiah(angka) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+    }
+
+    function bukaForm(namaMenu, harga) {
+      menuSaatIni = namaMenu; hargaSatuan = harga;
+      document.getElementById('namaMenuPilihan').innerText = `${namaMenu} (${formatRupiah(harga)})`;
+      document.getElementById('inputJumlah').value = 1;
+      hitungTotal();
+      document.getElementById('modalPesanan').style.display = 'flex';
+    }
+
+    function tutupForm() {
+      document.getElementById('modalPesanan').style.display = 'none';
+      document.getElementById('formPesan').reset();
+    }
+
+    function hitungTotal() {
+      const jumlah = document.getElementById('inputJumlah').value;
+      document.getElementById('teksTotal').innerText = formatRupiah(hargaSatuan * jumlah);
+    }
+
+    function kirimKeWhatsApp(e) {
+      e.preventDefault();
+      const nama = document.getElementById('inputNama').value;
+      const meja = document.getElementById('inputMeja').value;
+      const jumlah = document.getElementById('inputJumlah').value;
+      const bayar = document.getElementById('inputBayar').value;
+      const total = hargaSatuan * jumlah;
+      const idPesanan = "ORD-" + Math.floor(Math.random() * 9000 + 1000);
+      const tanggal = new Date().toLocaleString('id-ID');
+
+      pesananTerakhir = { id: idPesanan, tanggal, nama, meja, menu: menuSaatIni, qty: jumlah, total, bayar };
+
+      let daftarPesanan = JSON.parse(localStorage.getItem('dataPesanan')) || [];
+      daftarPesanan.push(pesananTerakhir);
+      localStorage.setItem('dataPesanan', JSON.stringify(daftarPesanan));
+
+      tutupForm();
+      showToast();
+      
+      // Kirim WA
+      const nomorWA = "62895320078768"; 
+      const teks = `*PESANAN BARU KOPINYANTUY* ☕\n\nID: ${idPesanan}\nNama: ${nama}\nMeja: ${meja}\nMenu: ${menuSaatIni} (${jumlah}x)\nBayar: ${bayar}\nTotal: ${formatRupiah(total)}\n\n_Mohon disiapkan!_`;
+      window.open(`https://wa.me/${nomorWA}?text=${encodeURIComponent(teks)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
