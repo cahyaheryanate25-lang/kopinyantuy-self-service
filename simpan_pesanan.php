@@ -1,34 +1,37 @@
 <?php
-header('Content-Type: application/json');
+// Konfigurasi Koneksi Database
+$host = "localhost";
+$user = "admin_kopi";
+$pass = "kolorijo123";
+$db   = "db"; // Sesuaikan jika nama database Anda berbeda di phpMyAdmin
 
-// Koneksi ke Database Laragon
-$conn = new mysqli("localhost", "root", "", "db_kopinyantuy");
+// Membuat koneksi ke MySQL
+$conn = mysqli_connect($host, $user, $pass, $db);
 
-if ($conn->connect_error) {
-    echo json_encode(["success" => false, "message" => "Koneksi database gagal"]);
-    exit;
+// Cek koneksi
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-$data = json_decode(file_get_contents('php://input'), true);
+// Mengambil data dari form (POST)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nama_pelanggan = isset($_POST['nama_pelanggan']) ? mysqli_real_escape_string($conn, $_POST['nama_pelanggan']) : '';
+    $detail_pesanan = isset($_POST['detail_pesanan']) ? mysqli_real_escape_string($conn, $_POST['detail_pesanan']) : '';
+    $total_harga    = isset($_POST['total_harga']) ? mysqli_real_escape_string($conn, $_POST['total_harga']) : 0;
 
-if ($data) {
-    $kode_order = $data['id'];
-    $meja = $data['meja'];
-    $bayar = $data['bayar'];
-    $rincian = $data['rincian'];
-    $total = $data['total'];
+    // Simpan ke tabel pesanan
+    $sql = "INSERT INTO pesanan (nama_pelanggan, detail_pesanan, total_harga, tanggal) 
+            VALUES ('$nama_pelanggan', '$detail_pesanan', '$total_harga', NOW())";
 
-    $stmt = $conn->prepare("INSERT INTO pesanan (kode_order, nomor_meja, metode_bayar, rincian_menu, total_harga) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssi", $kode_order, $meja, $bayar, $rincian, $total);
-
-    if ($stmt->execute()) {
-        echo json_encode(["success" => true, "message" => "Pesanan berhasil disimpan"]);
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>
+                alert('Pesanan berhasil disimpan!');
+                window.location.href = 'index.php';
+              </script>";
     } else {
-        echo json_encode(["success" => false, "message" => "Gagal menyimpan pesanan"]);
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-    $stmt->close();
-} else {
-    echo json_encode(["success" => false, "message" => "Data tidak valid"]);
 }
-$conn->close();
+
+mysqli_close($conn);
 ?>
